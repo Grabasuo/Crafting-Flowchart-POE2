@@ -1,0 +1,1274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 12px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+}
+ 
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  height: 28px;
+  flex-shrink: 0;
+}
+ 
+.top-bar label {
+  color: #8b949e;
+  font-size: 11px;
+  white-space: nowrap;
+}
+ 
+.top-bar input[type="text"] {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 1px 5px;
+  height: 20px;
+  width: 120px;
+  outline: none;
+}
+
+.top-bar input[type="text"]:focus {
+  border-color: #58a6ff;
+}
+
+.sync-btn {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 10px;
+  padding: 1px 6px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+ 
+.sync-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3fb950;
+  display: inline-block;
+}
+ 
+.spent-info {
+  color: #8b949e;
+  font-size: 11px;
+  white-space: nowrap;
+}
+ 
+.top-bar input[type="number"] {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 1px 4px;
+  height: 20px;
+  width: 50px;
+  outline: none;
+}
+ 
+.ex-div-val {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 1px 6px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+ 
+/* MAIN LAYOUT */
+.main {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+}
+ 
+/* LEFT SIDEBAR */
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  display: flex;
+  flex-direction: column;
+  overflow-y: visible;
+  overflow-x: hidden;
+  min-height: min-content;
+}
+ 
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #30363d;
+}
+
+.resize-handle {
+  width: 5px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: transparent;
+  cursor: col-resize;
+  position: relative;
+  z-index: 10;
+  transition: background 0.15s;
+}
+.resize-handle:hover,
+.resize-handle.dragging {
+  background: #58a6ff;
+}
+ 
+/* Craft selector row */
+.craft-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.craft-select {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 2px 4px;
+  height: 22px;
+  flex: 1;
+  outline: none;
+  cursor: pointer;
+}
+ 
+.version-badge {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 10px;
+  padding: 1px 5px;
+  margin-left: 4px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+ 
+/* Template row */
+.template-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.template-select {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 2px 4px;
+  height: 22px;
+  flex: 1;
+  outline: none;
+  cursor: pointer;
+}
+ 
+.btn {
+  border: 1px solid #30363d;
+  font-size: 11px;
+  padding: 2px 8px;
+  height: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  outline: none;
+}
+ 
+.btn-copy {
+  background: #1c2128;
+  color: #c9d1d9;
+}
+ 
+/*.btn-price {
+  background: #1c2128;
+  color: #c9d1d9;
+} */
+ 
+.btn-publish {
+  background: #238636;
+  border-color: #2ea043;
+  color: #fff;
+}
+ 
+.btn-publish:hover {
+  background: #2ea043;
+}
+ 
+/* Action buttons */
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.btn-update {
+  background: #1f6feb;
+  border: 1px solid #388bfd;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 10px;
+  height: 22px;
+  cursor: pointer;
+  outline: none;
+}
+ 
+.btn-del {
+  background: #da3633;
+  border: 1px solid #f85149;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  height: 22px;
+  cursor: pointer;
+  outline: none;
+}
+ 
+/* Template notice */
+.template-notice {
+  padding: 6px 8px;
+  color: #8b949e;
+  font-size: 10px;
+  line-height: 1.5;
+  border-bottom: 1px solid #21262d;
+}
+ 
+/* Node buttons */
+.node-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3px;
+  padding: 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.btn-node {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 10px;
+  padding: 3px 4px;
+  height: 24px;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  white-space: nowrap;
+}
+ 
+.btn-node:hover {
+  background: #21262d;
+  border-color: #8b949e;
+}
+ 
+/* CRUD row */
+.crud-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3px;
+  padding: 0 6px 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.btn-save, .btn-new, .btn-fit, .btn-export, .btn-import {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  height: 26px;
+  cursor: pointer;
+  outline: none;
+}
+ 
+.btn-delete-red {
+  background: #da3633;
+  border: 1px solid #f85149;
+  color: #fff;
+  font-size: 11px;
+  height: 26px;
+  cursor: pointer;
+  outline: none;
+}
+ 
+/* Import/Export row */
+.io-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  padding: 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+/* Search section */
+.search-section {
+  padding: 6px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.search-label {
+  color: #8b949e;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+ 
+.search-input {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 3px 6px;
+  height: 22px;
+  width: 100%;
+  outline: none;
+}
+ 
+.search-input:focus {
+  border-color: #58a6ff;
+}
+ 
+.search-input::placeholder {
+  color: #484f58;
+}
+ 
+/* Selected section */
+.selected-section {
+  padding: 6px;
+  flex: 1;
+}
+ 
+.selected-label {
+  color: #8b949e;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+ 
+.selected-hint {
+  color: #484f58;
+  font-size: 11px;
+}
+ 
+.btn-clear-all {
+  width: calc(100% - 12px);
+  margin: 6px;
+  background: #da3633;
+  border: 1px solid #f85149;
+  color: #fff;
+  font-size: 11px;
+  height: 26px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-clear-all:hover {
+  background: #f85149;
+}
+
+.selected-section.active {
+  background: #1c2128;       
+  border: 1px solid #e08127; 
+  border-radius: 8px;
+  margin: 4px;  
+}
+
+/* -------------------------------------------------------------------------*/
+
+/* Styles pour le contenu injecté dans "Selected" */
+.selected-details {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+/* Titre des containers */
+.selected-title, .selected-cost, .selected-notes, .main-box-title {
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 600;
+}
+/*Container en dessous du titre */
+.selected-input-title {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 3px 6px;
+  height: 22px;
+  width: 100%;
+  outline: none;
+}
+/*Ligne container_chance + bouton '+item' */
+.chance-row {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* L'espace entre la pilule et le bouton */
+  margin-top: 6px;
+}
+/*Container des chances */
+.chance-container {
+  display: flex; /*Permet d'aligner les enfants sur une ligne*/
+  align-items: center;
+  background: #010409;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 2px 8px;
+  height: 24px;
+  flex: 1; /*dit à la pilule de prendre toute la place restante à gauche du bouton ! */
+}
+
+.chance-container:focus-within {
+  border-color: #58a6ff;
+}
+
+.chance {
+  color: #8b949e;
+  font-size: 11px;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.chance-input {
+  background: transparent; /* Fond transparent pour fusionner avec le conteneur */
+  border: none; /* Pas de bordure pour cet input */
+  color: #c9d1d9;
+  font-size: 11px;
+  width: 100%;
+  outline: none; /* Enlève la bordure par défaut au clic */
+}
+
+.chance-input::placeholder {
+  color: #484f58;
+}
+
+/* Bouton +item */
+.btn-add-item {
+  background: #1f6feb;
+  border: 1px solid #388bfd;
+  color: #fff;
+  border-radius: 4px;
+  height: 24px; /*même hauteur que la pilule pour que ce soit aligné */
+}
+
+.btn-add-item:hover {
+  background: #388bfd;
+}
+/*Containers en dessous de chance_row */
+.selected-input-cost {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 3px 6px;
+  height: 22px;
+  width: 100%;
+  outline: none;
+}
+
+.selected-input-notes {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 11px;
+  padding: 3px 6px;
+  height: 100px;
+  width: 100%;
+  outline: none;
+  resize: none;
+}
+
+/* -------------------------------------------------------------------------*/
+
+/* Main box */
+.selected-main-box {
+  background: #1c2128;      
+  border: 1px solid #30363d;
+  border-radius: 8px;       
+  padding: 10px;            
+  margin-top: 8px;         
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Ajuster l'espacement entre le titre "Outcomes" et la première ligne de chance */
+.selected-main-box, .chance-row {
+  margin-top: 0;
+}
+
+/*Outcomes containers */
+.main-box-out {
+  background: #242931;      
+  border: 1px solid #30363d;
+  border-radius: 8px;       
+  padding: 10px;            
+  margin-top: 8px;         
+  display: flex;
+  flex-direction: column;
+}
+
+.out-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.out-container, .out-container-title, .out-container-percent {
+  display: flex;
+  align-items: center;
+  background: #010409;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 0 8px;
+  height: 24px;
+}
+
+.out-label {
+  color: #8b949e;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.out-container-title { flex: 1; }
+
+.out-input-title {
+  background: transparent; border: none; color: #707479;
+  font-size: 11px; width: 100%; outline: none; 
+}
+.out-input-title::placeholder { color: #484f58; }
+
+.out-container-percent { width: 60px; padding: 0 6px 0 8px; }
+
+.out-input-percent {
+  background: transparent; border: none; color: #c9d1d9;
+  font-size: 11px; width: 100%; outline: none; text-align: right;
+  -moz-appearance: textfield;
+}
+
+.percent-symbol { color: #8b949e; font-size: 11px; margin-left: 2px; }
+
+/* Le conteneur devient totalement invisible mais garde sa taille */
+.out-container-color { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; 
+  height: 24px;
+  background: transparent; 
+  border: none;
+  padding: 0;
+}
+
+.out-input-color {
+  -webkit-appearance: none; 
+  border: none; 
+  width: 100%;
+  height: 100%; 
+  cursor: pointer; 
+  background: transparent;
+  outline: none;
+}
+
+.out-input-color::-webkit-color-swatch-wrapper { padding: 0; }
+
+/* Pour Google Chrome, Edge, Safari */
+.out-input-color::-webkit-color-swatch {
+  border: 1px solid #30363d; 
+  border-radius: 20px; 
+}
+
+/* Pour Mozilla Firefox */
+.out-input-color::-moz-color-swatch {
+  border: 1px solid #30363d; 
+  border-radius: 20px; 
+}
+
+.out-container-title:focus-within, .out-container-percent:focus-within {
+  border-color: #58a6ff;
+}
+
+.btn-outcome {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.btn-outcome-action {
+  flex: 1;
+  border-radius: 12px;
+  height: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.btn-duplicate {
+  background: #0e274b;
+  border: 1px solid #1a3c64;
+  color: #c9d1d9;
+}
+
+.btn-duplicate:hover {
+  background: #0e4685;
+  border-color: #244b79;
+}
+
+.btn-delete {
+  background: #da3633;
+  border: 1px solid #f85149;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #f85149;
+}
+
+/* CENTER CANVAS */
+.canvas-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #0d1117;
+  overflow: auto; /* Modifié ici */
+  align-self: stretch;
+  position: relative;
+}
+ 
+.canvas-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 10px;
+  background: #0d1117;
+  border-bottom: 1px solid #21262d;
+  height: 28px;
+  flex-shrink: 0;
+}
+ 
+.zoom-pct {
+  color: #8b949e;
+  font-size: 11px;
+  font-weight: 600;
+}
+ 
+.btn-reset {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+}
+ 
+.btn-reset:hover {
+  color: #c9d1d9;
+}
+ 
+.canvas-body {
+  flex: none; /* Empêche le canvas de rétrécir */
+  width: 5000px;  /* Un espace gigantesque */
+  height: 5000px;
+  background: #0d1117;
+  background-image: radial-gradient(circle, #21262d 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative;
+  cursor: crosshair;
+  transform-origin: 0 0; /* Le zoom se fera depuis le coin en haut à gauche */
+  transition: transform 0.1s ease-out; /* Rend le zoom fluide */
+}
+ 
+/* RIGHT PANEL */
+.right-panel {
+  width: 180px;
+  flex-shrink: 0;
+  background: #161b22;
+  border-left: 1px solid #30363d;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+}
+ 
+.right-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.right-title {
+  color: #c9d1d9;
+  font-size: 11px;
+  font-weight: 600;
+}
+ 
+.btn-close-panel {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.btn-close-panel:hover {
+  color: #c9d1d9;
+}
+ 
+.right-notice {
+  padding: 6px 8px;
+  color: #8b949e;
+  font-size: 10px;
+  line-height: 1.5;
+  border-bottom: 1px solid #21262d;
+}
+ 
+.right-empty {
+  padding: 8px;
+  color: #484f58;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* --- BLOCS DANS LE CANVAS (+STEP) --- */
+
+.canvas-node {
+  position: absolute; 
+  top: 50px;          
+  left: 50px;
+  width: 220px;     
+  min-height: 120px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px; 
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- INTÉRIEUR DES BLOCS (NODES) --- */
+
+/* Bandeau du haut */
+.node-header {
+  display: flex;
+  justify-content: space-between; /* Pousse le titre à gauche et la chance à droite */
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  cursor: grab
+}
+
+.node-header:active {
+  cursor: grabbing;
+}
+
+.node-title {
+  color: #c9d1d9;
+  font-size: 13px;
+  font-weight: 600;
+  /* Pour éviter que le titre ne déborde si c'est trop long */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px; 
+}
+
+/* Le petit badge pour la Reach Chance */
+.node-chance-badge {
+  background: #010409;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: #8b949e;
+  font-weight: 600;
+}
+
+/* Liste des Outcomes en dessous */
+.node-outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.node-outcome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Le rond de couleur */
+.node-outcome-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  /* La couleur de fond sera injectée directement par le HTML/JS */
+}
+
+.node-outcome-label {
+  color: #8b949e;
+  font-size: 11px;
+}
+
+/* Badge pour le prix estimé (même style que la chance) */
+.node-cost-badge {
+  background: #010409;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: #d29922; /* Une couleur dorée/jaune pour le prix */
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* Bouton Done dans le bandeau */
+.btn-node-done {
+  background: #21262d; /* Gris par défaut */
+  border: 1px solid #30363d;
+  color: #8b949e;
+  border-radius: 4px;
+  font-size: 9px;
+  padding: 2px 6px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* État vert quand validé */
+.btn-node-done.validated {
+  background: #238636;
+  border-color: #2ea043;
+  color: #fff;
+}
+
+/* Affichage du % dans la ligne outcome */
+.node-outcome-percent {
+  color: #f0f6fc;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: auto; /* Pousse le pourcentage tout à droite de la ligne */
+  background: #21262d;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* --- NOTES AFFICHÉES DANS LE BLOC --- */
+.node-notes {
+  color: #8b949e;
+  font-size: 11px;
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #30363d; /* Petite ligne de séparation */
+  white-space: pre-wrap; /* Conserve les retours à la ligne */
+}
+
+/* Magie : si la div est vide, elle disparaît totalement ! */
+.node-notes:empty {
+  display: none;
+}
+
+/* --- POIGNÉE DE REDIMENSIONNEMENT DU BLOC --- */
+.node-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: se-resize; /* Affiche la flèche de redimensionnement en diagonale */
+  /* Petit effet visuel : un triangle gris discret dans le coin */
+  background: linear-gradient(135deg, transparent 50%, #484f58 50%);
+  border-bottom-right-radius: 10px; /* Épouse l'arrondi du bloc */
+  z-index: 10;
+}
+
+.node-resize-handle:hover {
+  background: linear-gradient(135deg, transparent 50%, #58a6ff 50%); /* Devient bleu au survol */
+}
+
+/* Style pour le bloc sélectionné sur le canvas */
+.canvas-node.selected {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- BOUTON FERMER (CROIX ROUGE) DANS LE BLOC --- */
+.btn-node-close {
+  background: transparent;
+  border: none;
+  color: #da3633;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0 0 6px;
+  margin-left: 4px;
+  transition: all 0.2s; 
+  font-weight: bold;
+}
+
+.btn-node-close:hover {
+  color: #f85149;   
+  transform: scale(1.2); 
+}
+
+/* --- LIGNES DE CONNEXION ET PORTS --- */
+
+/* Le calque de dessin pour les lignes (doit passer à travers les clics) */
+#svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Laisse passer les clics vers les blocs en dessous */
+  z-index: 0;
+}
+
+/* On s'assure que les blocs sont au-dessus des lignes */
+.canvas-node {
+  z-index: 1;
+}
+
+/* Style commun aux points de connexion */
+.port {
+  width: 12px;
+  height: 12px;
+  background: #30363d;
+  border: 2px solid #0d1117;
+  border-radius: 50%;
+  cursor: crosshair; /* Curseur en forme de cible */
+  position: absolute;
+  pointer-events: auto; /* Important pour pouvoir cliquer dessus */
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.port:hover {
+  background: #58a6ff;
+  transform: scale(1.2);
+}
+
+/* Port d'entrée (à gauche du bandeau du bloc) */
+.port-in {
+  left: -6px;
+  top: 16px;
+}
+
+/* Port de sortie (à droite de chaque ligne outcome) */
+.port-out {
+  right: -6px;
+  /* top est géré automatiquement par le centrage en flexbox de la ligne */
+}
+
+/* --- STYLE DES LIGNES (Pour la suppression) --- */
+.node-connection {
+  pointer-events: visibleStroke; /* Magique : Seule la ligne exacte capte le clic, pas la zone autour ! */
+  cursor: pointer;
+  transition: stroke 0.2s, stroke-width 0.2s; /* Animation fluide */
+}
+
+/* Quand on survole la ligne avec la souris */
+.node-connection:hover {
+  stroke: #da3633;     /* Rouge (la même couleur que ton bouton Delete) */
+  stroke-width: 4px;   /* On la rend plus épaisse pour faciliter le clic */
+}
+
+/* --- POP-UP (MODALE) POUR + ITEM --- */
+
+/* Le fond sombre qui recouvre tout l'écran */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Noir transparent */
+  z-index: 1000; /* On s'assure qu'il passe par-dessus TOUT le reste */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Petite animation d'apparition douce */
+  animation: fadeIn 0.2s ease-out; 
+}
+
+/* La boîte de la pop-up au centre */
+.item-modal {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px; /* Les fameux bords arrondis */
+  width: 400px; /* Largeur de la pop-up */
+  min-height: 200px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* L'en-tête de la pop-up avec le titre et la croix */
+.item-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c9d1d9;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 8px;
+}
+
+/* Le bouton pour fermer la pop-up */
+.btn-close-modal {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-close-modal:hover {
+  color: #da3633; /* Rouge au survol */
+}
+
+/* Contenu de la pop-up */
+.item-modal-body {
+  flex: 1;
+  color: #8b949e;
+  font-size: 12px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- CONTENU DE LA MODALE (+ ITEM) --- */
+
+/* Lignes pour aligner les éléments */
+.modal-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Conteneurs pour les inputs (style arrondi sombre) */
+.modal-input-container {
+  display: flex;
+  align-items: center;
+  background: #010409;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 4px 8px;
+  height: 32px;
+}
+
+.modal-input-container:focus-within {
+  border-color: #58a6ff;
+}
+
+/* Le petit texte gris dans la boîte (Item, Qty, etc.) */
+.modal-label {
+  color: #8b949e;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+/* Le champ de saisie transparent */
+.modal-input {
+  background: transparent;
+  border: none;
+  color: #c9d1d9;
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+}
+
+/* Le menu déroulant pour la monnaie */
+.modal-select {
+  background: transparent;
+  border: none;
+  color: #58a6ff; /* En bleu pour montrer que c'est cliquable */
+  font-size: 12px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-select option {
+  background: #161b22; /* Fond sombre quand le menu s'ouvre */
+  color: #c9d1d9;
+}
+
+/* Le bouton ADD (Vert pour valider l'ajout) */
+.btn-modal-add {
+  background: #238636;
+  border: 1px solid #2ea043;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 8px;
+  height: 32px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-modal-add:hover {
+  background: #2ea043;
+}
+
+/* --- ITEMS AJOUTÉS DANS LE BLOC (PILULES) --- */
+.node-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px; /* Petit espace avant de passer aux Outcomes */
+}
+
+/* Ligne qui contient les deux pilules côte à côte */
+.node-item-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap; /* Si c'est trop long, ça passe à la ligne */
+}
+
+/* La pilule en elle-même */
+.node-item-pill {
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: #c9d1d9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* Couleurs spécifiques pour faire ressortir les infos importantes */
+.node-item-highlight {
+  color: #58a6ff; /* Bleu pour les chiffres (Qté, Prix) */
+  font-weight: bold;
+}
+
+.node-item-currency {
+  color: #d29922; /* Doré pour le type de monnaie */
+  font-weight: bold;
+}
+
+/* --- POP-UP DE CONFIRMATION (SUPPRESSION) --- */
+.confirm-modal {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  width: 320px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.confirm-text {
+  color: #c9d1d9;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Bouton Annuler (Gris neutre) */
+.btn-cancel {
+  background: #21262d;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-cancel:hover { background: #30363d; }
+
+/* Bouton Confirmer (Rouge vif) */
+.btn-confirm-delete {
+  background: #da3633;
+  border: 1px solid #f85149;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-confirm-delete:hover { background: #f85149; }
