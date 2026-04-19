@@ -4,3 +4,9 @@ I am no professional coder, i'm only trying to learn alongside using AI.
 
 The project availability is planned for 0.5.
 However with the end of semester projects / exams going on mid May and my excitement about the prospect of trying 0.5 (which will surely add new crafting methods meaning additional work on the planner) this project might be delayed to a further date.
+
+Note from 20/04/26:
+  The flowchart has reached a state where it seems pretty usable for the current crafting methods, nevertheless it lacks a lot of clarity and visuals to minimize users to be   lost. 
+  Import / Export & Pricer remain undesigned atm, so no sharing available.
+  
+  
